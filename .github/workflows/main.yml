@@ -1,0 +1,24 @@
+name: SQL Server Bursary Management
+on:
+    push:
+        branches: [ main ]
+    pull_request:
+        branches: [ main ]
+        
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    services:
+      mssql:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        env:
+          SA_PASSWORD: MyTestPassword
+          ACCEPT_EULA: 'Y'
+        ports:
+          - 1433:1433
+    steps:
+      - name: Compile and Test from Build Script
+        shell: pwsh
+        run: .\BursaryManagement.sqlproj
+        env:
+          ConnectionStrings__MyConnString: "Server=localhost,1433;Initial Catalog=MyTestDb;User Id=sa;Password=MyTestPassword;"
