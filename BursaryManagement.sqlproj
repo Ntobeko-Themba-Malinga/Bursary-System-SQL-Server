@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="0.1.12-preview" />
+  <PropertyGroup>
+    <Name>BursaryManagement</Name>
+    <ProjectGuid>{B755C4BF-1D86-46C8-9E65-89D623358E7C}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Data" />
+    <Folder Include="Procedures" />
+    <Folder Include="ScalarFunctions" />
+    <Folder Include="Tables" />
+    <Folder Include="TableValuedFunctions" />
+    <Folder Include="Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="sds.sql" />
+  </ItemGroup>
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
+</Project>
