@@ -17,8 +17,8 @@ jobs:
         ports:
           - 1433:1433
     steps:
-      - name: Compile and Test from Build Script
+      - name: Run Scripts
         shell: pwsh
-        run: .\BursaryManagement.sqlproj
+        run: .\BursaryManagement.dacpac
         env:
           ConnectionStrings__MyConnString: "Server=localhost,1433;Initial Catalog=MyTestDb;User Id=sa;Password=MyTestPassword;"
